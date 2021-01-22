@@ -29,6 +29,9 @@ The acceptance criteria is as follows:
 
 ## Launch
 
+- [Repository](https://github.com/Connerjm/Work-Day-Scheduler)
+- [Deployment](https://connerjm.github.io/Work-Day-Scheduler/)
+
 ## Images
 
 ## Issues
