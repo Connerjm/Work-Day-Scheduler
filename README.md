@@ -21,11 +21,27 @@ The acceptance criteria is as follows:
 - [ ] When clicking to save an event, the text for that event is saved in local storage.
 - [ ] When refreshing the page, the saved events persist.
 
+Notes to self:
+
+- Gray for past hours, Red for current, Green for future.
+- Tab on the left hand side displaying the hour it represents.
+- Blue tab on the right hand side to click to save current state of text area.
+- Styles the the given code defines but does not use are.
+  - textarea
+  - .description
+  - .time-block
+  - .row
+  - .hour
+  - .past
+  - .present
+  - .future
+  - .saveBtn
+
 ## Technologies
 
 - HTML
 - CSS with Bootstrap, Font Awesome, and Google Fonts
-- JavaScript with jQuery and Moment.js
+- JavaScript with jQuery and Luxon
 
 ## Launch
 
