@@ -36,12 +36,15 @@ textarea{
   border-top: 1px solid white;;
 }
 
+/* Left hand side box showing the hour. */
 .hour {
   background-color: #ffffff;
   color: #000000;
   border-top: 1px dashed #000000;
+  padding: 10px;
 }
 
+/* Colors denoting tense. */
 .past {
   background-color: #d3d3d3;
   color: white;
@@ -57,12 +60,14 @@ textarea{
   color: white;
 }
 
+/* Right hand side button to save. */
 .saveBtn {
   border-left: 1px solid black;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   background-color: #06AED5;
   color: white;
+  padding: 15px;
 }
 
 .saveBtn i:hover {
