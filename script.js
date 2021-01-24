@@ -24,20 +24,6 @@ function createTimeBlocks()
         //Creates the row div.
         var newrow = $("<div class=\"row time-block\"></div>");
 
-        //Assigns the row a color depending on current time.
-        if (i < currentHour)
-        {
-            newrow.addClass("past");
-        }
-        else if (i === currentHour)
-        {
-            newrow.addClass("present");
-        }
-        else
-        {
-            newrow.addClass("future");
-        }
-
         //Creates the time marker on the left of the block.
         var newhour = $("<div class=\"hour\"></div>").text(i + ":00");
         newrow.append(newhour);
@@ -50,6 +36,22 @@ function createTimeBlocks()
         //Creates the save button.
         var newsavebutton = $("<button class=\"saveBtn\"><i class=\"fas fa-save\"></i></button>");
         newrow.append(newsavebutton);
+        
+        //Assigns the row a color depending on current time.
+        if (i < currentHour)
+        {
+            newrow.addClass("past");
+            newtextarea.attr("disabled", "true");
+            newsavebutton.attr("disabled", "true");
+        }
+        else if (i === currentHour)
+        {
+            newrow.addClass("present");
+        }
+        else
+        {
+            newrow.addClass("future");
+        }
 
         //Adds the new row to the container.
         timeblockcontainer.append(newrow);
