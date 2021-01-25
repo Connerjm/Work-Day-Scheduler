@@ -2,11 +2,11 @@ $(document).ready(function()
 {
     //Object constructor
 
-// function eventEntry(hour, text)
-// {
-//     $(this).eventHour = hour;
-//     $(this).eventText = text;
-// }
+function eventEntry(hour, text)
+{
+    $(this).eventHour = hour;
+    $(this).eventText = text;
+}
 
 //Variables
 
@@ -95,7 +95,7 @@ function restoreEvents()//Function to take saved events and write them back to t
 
 //Listeners
 
-$(".saveBtn").on("click", function(){
+$(".saveBtn").on("click", function(){//Testing.
   alert("The save button was clicked.");
 });
 
@@ -103,12 +103,14 @@ $(".saveBtn").on("click", function(){
 // {
 //     console.log("Clicking a save button.");
 //     //Get assosiated textarea.
-//     // var textarea = $(this).siblings("#textarea");
-//     // console.log(textarea.text());
-//     //Get text from textarea.
+//     var textarea = $(this).siblings("textarea");
+//     console.log(textarea.text());
 //     //create a new eventEntry object.
+//     var entry = new eventEntry(textarea.data.hour, textarea.text());
 //     //Add the object to the event array.
+//     eventArray.push(entry);
 //     //Save the updated array to local storage.
+//     localStorage.setItem("eventArray", JSON.stringify(eventArray));
 // });
 
 //Calling functions
