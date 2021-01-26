@@ -6,6 +6,7 @@
 - [Technologies](#technologies)
 - [Launch](#launch)
 - [Images](#images)
+- [To Do's](#to-do's)
 - [Issues](#issues)
 
 ## Introduction
@@ -14,12 +15,12 @@ This program is a simple calendar application that allows a user to save events 
 
 The acceptance criteria is as follows:
 
-- [ ] When opening the planner, the current day is displayed at the top.
-- [ ] When scrolling down, the time blocks for standard business hours are presented.
-- [ ] When viewing the time blocks for a given day, each time block is color-coded.
-- [ ] When clicking a time block, an event can be entered.
-- [ ] When clicking to save an event, the text for that event is saved in local storage.
-- [ ] When refreshing the page, the saved events persist.
+- [x] When opening the planner, the current day is displayed at the top.
+- [x] When scrolling down, the time blocks for standard business hours are presented.
+- [x] When viewing the time blocks for a given day, each time block is color-coded.
+- [x] When clicking a time block, an event can be entered.
+- [x] When clicking to save an event, the text for that event is saved in local storage.
+- [x] When refreshing the page, the saved events persist.
 
 Notes to self:
 
@@ -50,6 +51,11 @@ Notes to self:
 
 ## Images
 
+## To Do's
+
+- [ ] Add the ability to set events for multiple days.
+- [ ] Add a switch for 12 or 24 hour time.
+
 ## Issues
 
-- WHY WILL MY BUTTON NO DO ANYTHING
+- ~~WHY WILL MY BUTTON NO DO ANYTHING~~

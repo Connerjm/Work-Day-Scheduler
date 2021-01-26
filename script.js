@@ -1,8 +1,8 @@
-$(document).ready(function()
+$(document).ready(function()//Runs once the document is ready.
 {
-    //Object constructor
+//Object constructor
 
-function eventEntry(hour, text)
+function eventEntry(hour, text)//An entry holding the hour of and the text for the given event.
 {
     this.eventHour = hour;
     this.eventText = text;
@@ -11,8 +11,8 @@ function eventEntry(hour, text)
 //Variables
 
 var dt = luxon.DateTime.local();//The DateTime object that we get from Luxon.
-var currentHour, startingtime = 10;
-var eventArray;
+var currentHour, startingtime = 10;//Starting time is the first hour that will be put in a time block.
+var eventArray;//Holds all the events.
 
 //Main functions
 
@@ -40,8 +40,8 @@ function initialize()//Sets up everything when the application is launched.
 
 function createTimeBlocks()//Builds the time block elements.
 {
-    var timeblockcontainer = $(".container");
-    for (var i = startingtime; i < startingtime + 12; i++)
+    var timeblockcontainer = $(".container");//Grabbing the big div that houses the time blocks.
+    for (var i = startingtime; i < startingtime + 12; i++)//It currently makes 12 blocks, starting at a predifined time.
     {
         //Creates the row div.
         var newrow = $("<div class=\"row time-block\"></div>");
@@ -52,7 +52,6 @@ function createTimeBlocks()//Builds the time block elements.
 
         //Creates the textarea.
         var newtextarea = $("<textarea name=\"textarea\" class=\"flex-grow-1\" id=\"textarea\" data-hour=" + i + "></textarea>");
-
         newrow.append(newtextarea);
 
         //Creates the save button.
@@ -63,7 +62,7 @@ function createTimeBlocks()//Builds the time block elements.
         if (i < currentHour)
         {
             newrow.addClass("past");
-            newtextarea.attr("disabled", "true");
+            newtextarea.attr("disabled", "true");//Also disables the textarea and button if it's past time.
             newsavebutton.attr("disabled", "true");
         }
         else if (i === currentHour)
@@ -80,7 +79,7 @@ function createTimeBlocks()//Builds the time block elements.
     }
 }
 
-function createSaveButtonListeners()
+function createSaveButtonListeners()//Adds a function to the save buttons.
 {
     $(".saveBtn").on("click", function()
     {
@@ -89,23 +88,17 @@ function createSaveButtonListeners()
         //create a new eventEntry object.
         var entry = new eventEntry(textarea.data("hour"), textarea.val());
         //Add the object to the event array.
-
-        var entryAlreadyExsists = false;
-
-        eventArray.forEach(function (event, index)
+        var entryAlreadyExsists = false;//A toggle if the entry is new or replacing an old one.
+        eventArray.forEach(function (event, index)//Check the array for a matching element.
         {
             if (event.eventHour === textarea.data("hour"))//If this event already exsists in the array.
             {
-                entryAlreadyExsists = true;
+                entryAlreadyExsists = true;//Set the toggle.
                 eventArray[index] = entry;//Overwrite the old one.
             }
         });
-
         if (!entryAlreadyExsists)//If it doesn't exsist, push the entry.
-        {
             eventArray.push(entry);
-        }
-
         //Save the updated array to local storage.
         localStorage.setItem("eventArray", JSON.stringify(eventArray));
     });
@@ -120,11 +113,11 @@ function setDate ()//Sets the current date in the jumbotron.
 
 function restoreEvents()//Function to take saved events and write them back to the text areas.
 {
-    eventArray.forEach(function(entry)
+    eventArray.forEach(function(entry)//For every event saved in the array.
     {
-        var hourofevent = entry.eventHour;
-        var assosiatedtextarea = $("textarea[data-hour=\"" + hourofevent + "\"]");
-        assosiatedtextarea.val(entry.eventText);
+        var hourofevent = entry.eventHour;//Get the hour of the event.
+        var assosiatedtextarea = $("textarea[data-hour=\"" + hourofevent + "\"]");//Get the textarea that matches.
+        assosiatedtextarea.val(entry.eventText);//Set the value of the textarea to the event text.
     });
 }
 
