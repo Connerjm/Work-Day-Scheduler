@@ -6,7 +6,7 @@
 - [Technologies](#technologies)
 - [Launch](#launch)
 - [Images](#images)
-- [To Do's](#to-do's)
+- [Todos](#todos)
 - [Issues](#issues)
 
 ## Introduction
@@ -41,8 +41,13 @@ Notes to self:
 ## Technologies
 
 - HTML
-- CSS with Bootstrap, Font Awesome, and Google Fonts
-- JavaScript with jQuery and Luxon
+- CSS
+  - Bootstrap 4.3.1
+  - Font Awesome 5.8.1
+  - Google Fonts
+- JavaScript
+  - jQuery 3.2.1
+  - Luxon.js
 
 ## Launch
 
@@ -51,11 +56,11 @@ Notes to self:
 
 ## Images
 
-## To Do's
+## Todos
 
 - [ ] Add the ability to set events for multiple days.
 - [ ] Add a switch for 12 or 24 hour time.
 
 ## Issues
 
-- ~~WHY WILL MY BUTTON NO DO ANYTHING~~
+- ~~WHY WILL MY BUTTONS NOT DO ANYTHING~~
