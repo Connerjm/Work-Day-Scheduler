@@ -4,8 +4,8 @@ $(document).ready(function()
 
 function eventEntry(hour, text)
 {
-    $(this).eventHour = hour;
-    $(this).eventText = text;
+    this.eventHour = hour;
+    this.eventText = text;
 }
 
 //Variables
@@ -24,19 +24,18 @@ function initialize()//Sets up everything when the application is launched.
     setDate();
     //Build 12ish time blocks. Each time block will be assigned an hour, and from that the color it needs to be.
     createTimeBlocks();
+    //Attach a function to the buttons.
+    createSaveButtonListeners();
     //Check for local storage. If present, set array to saved values.
-    if (localStorage.getItem("eventArray" !== null))
+    if (localStorage.getItem("eventArray") !== null)
     {
         eventArray = JSON.parse(localStorage.getItem("eventArray"));
-        restoreEvents();//TODO need to write.
+        restoreEvents();
     }
     else//Else instantiate an empty array.
     {
         eventArray = [];
     }
-    //Add listeners to the buttons that
-        //Get the text from the assosiated textarea
-        //Save that to local storage.
 }
 
 function createTimeBlocks()//Builds the time block elements.
@@ -54,7 +53,7 @@ function createTimeBlocks()//Builds the time block elements.
         //Creates the textarea.
         var newtextarea = $("<textarea name=\"textarea\" class=\"flex-grow-1\" id=\"textarea\" data-hour=" + i + "></textarea>");
 
-        newrow.append(newtextarea.text("This is the text area for " + i));//TODO delete text.
+        newrow.append(newtextarea);
 
         //Creates the save button.
         var newsavebutton = $("<button class=\"saveBtn\"><i class=\"fas fa-save\"></i></button>");
@@ -81,6 +80,37 @@ function createTimeBlocks()//Builds the time block elements.
     }
 }
 
+function createSaveButtonListeners()
+{
+    $(".saveBtn").on("click", function()
+    {
+        //Get assosiated textarea.
+        var textarea = $(this).siblings("textarea");
+        //create a new eventEntry object.
+        var entry = new eventEntry(textarea.data("hour"), textarea.val());
+        //Add the object to the event array.
+
+        var entryAlreadyExsists = false;
+
+        eventArray.forEach(function (event, index)
+        {
+            if (event.eventHour === textarea.data("hour"))//If this event already exsists in the array.
+            {
+                entryAlreadyExsists = true;
+                eventArray[index] = entry;//Overwrite the old one.
+            }
+        });
+
+        if (!entryAlreadyExsists)//If it doesn't exsist, push the entry.
+        {
+            eventArray.push(entry);
+        }
+
+        //Save the updated array to local storage.
+        localStorage.setItem("eventArray", JSON.stringify(eventArray));
+    });
+}
+
 //Helper functions
 
 function setDate ()//Sets the current date in the jumbotron.
@@ -90,34 +120,16 @@ function setDate ()//Sets the current date in the jumbotron.
 
 function restoreEvents()//Function to take saved events and write them back to the text areas.
 {
-    //TODO write this shit.
+    eventArray.forEach(function(entry)
+    {
+        var hourofevent = entry.eventHour;
+        var assosiatedtextarea = $("textarea[data-hour=\"" + hourofevent + "\"]");
+        assosiatedtextarea.val(entry.eventText);
+    });
 }
-
-//Listeners
-
-$(".saveBtn").on("click", function(){//Testing.
-  alert("The save button was clicked.");
-});
-
-// $(".saveBtn").on("click", function()
-// {
-//     console.log("Clicking a save button.");
-//     //Get assosiated textarea.
-//     var textarea = $(this).siblings("textarea");
-//     console.log(textarea.text());
-//     //create a new eventEntry object.
-//     var entry = new eventEntry(textarea.data.hour, textarea.text());
-//     //Add the object to the event array.
-//     eventArray.push(entry);
-//     //Save the updated array to local storage.
-//     localStorage.setItem("eventArray", JSON.stringify(eventArray));
-// });
 
 //Calling functions
 
 initialize();//Get the ball rolling.
 
-//Testing
-
-console.log($("textarea[data-hour=18]").text());
 });
