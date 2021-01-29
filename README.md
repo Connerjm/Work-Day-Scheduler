@@ -56,6 +56,12 @@ Notes to self:
 
 ## Images
 
+First opening the application.
+![First opening the application](Images/Initial.png)
+
+Saved events.
+![Saved events](Images/Events.png)
+
 ## Todos
 
 - [ ] Add the ability to set events for multiple days.
